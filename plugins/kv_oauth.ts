@@ -14,7 +14,7 @@ import type { UserProfile } from "../utils/user.ts";
 const { signIn, handleCallback, signOut, getSessionId: _getSessionId } =
   createHelpers(
     createGoogleOAuthConfig({
-      redirectUri: "http://localhost:8000/callback",
+      redirectUri: Deno.env.get("GOOGLE_CALLBACK_URI") ?? "http://localhost:8000/callback",
       scope: "https://www.googleapis.com/auth/userinfo.profile",
     }),
   );
