@@ -8,9 +8,9 @@ interface CounterProps {
 export default function Counter(props: CounterProps) {
   return (
     <div class="flex gap-8 py-6">
-      <Button vibratePattern={[100]} onClick={() => props.count.value -= 1}>-1</Button>
+      <Button vibratePattern={[10]} onClick={() => props.count.value -= 1}>-1</Button>
       <p class="text-3xl tabular-nums">{props.count}</p>
-      <Button vibratePattern={[50]} onClick={() => props.count.value += 1}>+1</Button>
+      <Button vibratePattern={[20]} onClick={() => props.count.value += 1}>+1</Button>
     </div>
   );
 }
