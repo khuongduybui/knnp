@@ -1,14 +1,15 @@
 import { JSX } from "preact";
 import { IS_BROWSER } from "$fresh/runtime.ts";
 
-export function Button(props: JSX.HTMLAttributes<HTMLButtonElement>) {
+type ButtonAttributes = JSX.HTMLAttributes<HTMLButtonElement> & {
+  vibratePattern?: number[];
+};
+export function Button(props: ButtonAttributes) {
   if (props.onClick) {
     const originalOnClick = props.onClick;
     props.onClick = (event) => {
-      if (window.navigator.vibrate) {
-        window.navigator.vibrate([500]);
-        originalOnClick(event);
-      }
+      props.vibratePattern && window.navigator.vibrate(props.vibratePattern);
+      return originalOnClick(event);
     };
   }
   return (
