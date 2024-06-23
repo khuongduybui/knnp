@@ -5,8 +5,10 @@ export function Button(props: JSX.HTMLAttributes<HTMLButtonElement>) {
   if (props.onClick) {
     const originalOnClick = props.onClick;
     props.onClick = (event) => {
-      window.navigator.vibrate?.(500);
-      originalOnClick(event);
+      if (window.navigator.vibrate) {
+        window.navigator.vibrate([500]);
+        originalOnClick(event);
+      }
     };
   }
   return (
