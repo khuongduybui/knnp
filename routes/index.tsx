@@ -30,40 +30,33 @@ export const handler: Handlers<HomeParams> = {
 export default function Home(props: PageProps<HomeParams>) {
   const count = useSignal(props.data.counter);
   return (
-    <div class="px-4 py-8 mx-auto bg-[#86efac]">
-      <div class="max-w-screen-md mx-auto flex flex-col items-center justify-center">
-        <img
-          class="my-6"
-          src="/logo.svg"
-          width="128"
-          height="128"
-          alt="the Fresh logo: a sliced lemon dripping with juice"
-        />
-        <h1 class="text-4xl font-bold">Welcome to Fresh</h1>
-        <p class="my-4">
-          Try updating this message in the
-          <code class="mx-2">./routes/index.tsx</code> file, and refresh.
-        </p>
-        <p>
-          <a href="/signin">Sign in</a>
-          <a href="/signout">Sign out</a>
-        </p>
-        <p>Signed in: {props.data.userProfile ? "Yes" : "No"}</p>
+    <div
+      style={{
+        width: "100vw",
+        height: "100vh",
+        display: "flex",
+        flexDirection: "column",
+      }}
+    >
+      <div style={{ width: "100vw" }}>
         {props.data.userProfile
           ? (
             <>
-              <p>User ID: {props.data.userProfile?.id}</p>
-              <p>User Name: {props.data.userProfile?.name}</p>
-              {props.data.userProfile?.picture && (
-                <p>
-                  User Picture: <img src={props.data.userProfile.picture}></img>
-                </p>
-              )}
-              <Counter count={count} />
+              <a href="/signout">
+                <wa-avatar
+                  image={props.data.userProfile.picture}
+                  label={props.data.userProfile.name}
+                />
+              </a>
             </>
           )
-          : null}
+          : (
+            <a href="/signin">
+              <wa-avatar label="Sign in" />
+            </a>
+          )}
       </div>
+      {props.data.userProfile && <Counter count={count} />}
     </div>
   );
 }
