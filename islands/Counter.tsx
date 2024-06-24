@@ -16,9 +16,9 @@ export default function Counter(props: CounterProps) {
       onClick={(_event) => {
         props.count.value++;
         if (props.count.value % 100 === 0) {
-          window.navigator.vibrate?.([100]);
+          window.navigator.vibrate?.([100, 100]);
         } else if (props.count.value % 10 === 0) {
-          window.navigator.vibrate?.([10]);
+          window.navigator.vibrate?.([108]);
         } else {
           window.navigator.vibrate?.([1]);
         }
