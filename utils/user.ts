@@ -1,5 +1,5 @@
 import { openKv } from "./kv.ts";
-import { getSessionId } from "$deno_kv_oauth/mod.ts";
+import { getSessionId } from "@deno/kv-oauth";
 
 export type UserProfile = {
   id: string;

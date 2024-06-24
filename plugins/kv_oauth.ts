@@ -6,7 +6,7 @@ Note: this plugin uses the following KV paths:
 - user_profile / {userProfile.id} = UserProfile
 */
 
-import { createGoogleOAuthConfig, createHelpers } from "$deno_kv_oauth/mod.ts";
+import { createGoogleOAuthConfig, createHelpers } from "@deno/kv-oauth";
 import type { Plugin } from "$fresh/server.ts";
 import { openKv } from "../utils/kv.ts";
 import type { UserProfile } from "../utils/user.ts";
